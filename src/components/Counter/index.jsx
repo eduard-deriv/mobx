@@ -1,10 +1,11 @@
 import React from 'react';
-import counter from "../store/counter";
+import counter from "../../store/counter";
 import { observer } from "mobx-react-lite";
+import classes from './styles.module.css'
 
 const Counter = observer(() => {
     return (
-        <div>
+        <div className={classes.root}>
             <div>
                 {counter.count}
             </div>
