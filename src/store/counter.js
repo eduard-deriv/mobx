@@ -1,23 +1,23 @@
 import {makeAutoObservable} from "mobx";
 
 class Counter {
-    count = 2
-    timer = 60
+    count = Number(0)
 
     constructor() {
+        this.count = Number(window.localStorage.getItem('counter') || 0)
         makeAutoObservable(this)
     }
 
     increase() {
-        this.count = this.count + 1
+        let new_count = Number(this.count + 1)
+        window.localStorage.setItem('counter', String(new_count))
+        this.count = new_count
     }
 
     decrease() {
-        this.count = this.count - 1
-    }
-
-    get total() {
-        return 'Count + time = ' + (this.count + this.timer)
+        let new_count = Number(this.count - 1)
+        window.localStorage.setItem('counter', String(new_count))
+        this.count = new_count
     }
 }
 
